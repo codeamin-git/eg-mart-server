@@ -35,7 +35,12 @@ const corsOptions = {
       app.get('/', async(req, res) => {
         const { page = 1, limit = 8, search = "", sort, brand_name,price,category,maxPrice,minPrice } = req.query;
     const skip = (page - 1) * limit;
-    
+
+    let filter = {};
+
+    if (search && search.length) {
+      filter.product_name = { $regex: search, $options: "i" };
+    }
       })
 
     
