@@ -63,6 +63,25 @@ if (minPrice || maxPrice) {
   }
 }
 
+  // sorting
+  let sortBy = {};
+    switch (sort) {
+      case "price_asc":
+        sortBy.price = 1;
+        break;
+      case "price_desc":
+        sortBy.price = -1;
+        break;
+      case "date_desc":
+        sortBy.creation_date = -1;
+        break;
+      // case "date_asc":
+      //   sortBy.creation_date = 1;
+      //   break;
+      default:
+        sortBy = {};
+    }
+
 
       })
 
