@@ -52,6 +52,17 @@ const corsOptions = {
     filter.category = {$regex: category, $options: 'i'};
 }
 
+// Filter by price range
+if (minPrice || maxPrice) {
+  filter.price = {};
+  if (minPrice) {
+      filter.price.$gte = parseInt(minPrice);
+  }
+  if (maxPrice) {
+      filter.price.$lte = parseInt(maxPrice);
+  }
+}
+
 
       })
 
