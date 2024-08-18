@@ -41,6 +41,11 @@ const corsOptions = {
     if (search && search.length) {
       filter.product_name = { $regex: search, $options: "i" };
     }
+
+    // Filter by brand
+    if (brand_name && brand_name.length) {
+      filter.brand_name = {$regex: brand_name, $options: 'i'};
+  }
       })
 
     
