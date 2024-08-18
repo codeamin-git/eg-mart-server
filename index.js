@@ -32,7 +32,9 @@ const corsOptions = {
     try {
       const productsCollection = client.db('egMart').collection('allProducts')
 
-      
+      app.get('/', async(req, res) => {
+        
+      })
 
     
 
