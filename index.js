@@ -82,6 +82,28 @@ if (minPrice || maxPrice) {
         sortBy = {};
     }
 
+    try {
+      const [products, totalProducts] = await Promise.all([
+        productsCollection
+          .find(filter)
+          .sort(sortBy)
+          .skip(skip)
+          .limit(parseInt(limit))
+          .toArray(),
+        productsCollection.countDocuments(filter),
+      ]);
+
+      const totalPages = Math.ceil(totalProducts / limit);
+
+      res.json({
+        products,
+        totalPages,
+        currentPage: page,
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+
 
       })
 
