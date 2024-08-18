@@ -46,6 +46,13 @@ const corsOptions = {
     if (brand_name && brand_name.length) {
       filter.brand_name = {$regex: brand_name, $options: 'i'};
   }
+
+  // Filter by category
+  if (category && category.length) {
+    filter.category = {$regex: category, $options: 'i'};
+}
+
+
       })
 
     
